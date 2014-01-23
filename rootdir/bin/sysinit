@@ -1,0 +1,4 @@
+#!/system/bin/sh
+
+export PATH=/sbin:/system/sbin:/system/bin:/system/xbin:/vendor/bin
+/system/bin/logwrapper /system/xbin/busybox run-parts /system/etc/init.d

@@ -36,3 +36,15 @@ $(LOCAL_BUILT_MODULE): $(LOCAL_PATH)/init.environ.rc.in
 	$(hide) sed -e 's?%BOOTCLASSPATH%?$(PRODUCT_BOOTCLASSPATH)?g' $< >$@
 
 #######################################
+# sysinit
+# Needed for init.d support
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := sysinit
+LOCAL_SRC_FILES := bin/$(LOCAL_MODULE)
+LOCAL_MODULE_PATH := $(TARGET_OUT_EXECUTABLES)
+LOCAL_MODULE_CLASS := EXECUTABLES
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_PREBUILT)

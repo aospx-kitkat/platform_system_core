@@ -173,6 +173,9 @@ on post-fs
     mkdir /cache/lost+found 0770 root root
 
 on post-fs-data
+    # Run sysinit
+    start sysinit
+
     # We chown/chmod /data again so because mount is run as root + defaults
     chown system system /data
     chmod 0771 /data
@@ -552,3 +555,9 @@ service mdnsd /system/bin/mdnsd
     socket mdnsd stream 0660 mdnsr inet
     disabled
     oneshot
+
+# sysinit (/system/etc/init.d)
+service sysinit /system/bin/sysinit
+    user root
+    oneshot
+    disabled
